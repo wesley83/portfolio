@@ -29,6 +29,9 @@ nav {
     justify-content: center;
     padding: 10px 0;
     background-color: #34495e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav a {
@@ -36,10 +39,14 @@ nav a {
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Smooth color and scaling transition */
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #1abc9c;
+    transform: scale(1.1);
+    /* Slightly scale up the link when hovered */
 }
 
 main {
@@ -54,6 +61,13 @@ section {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    /* Moves section slightly up */
 }
 
 h2 {
@@ -78,14 +92,23 @@ ul li {
     padding: 10px;
     border: 1px solid #bdc3c7;
     border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul li:hover {
+    background-color: #dfe6e9;
+    /* Light background change */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 ul li a {
     color: #2980b9;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 ul li a:hover {
+    color: #1abc9c;
     text-decoration: underline;
 }
 
