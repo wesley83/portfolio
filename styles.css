@@ -72,6 +72,19 @@ ul {
     padding: 0;
 }
 
+/* Hide items beyond the 10th */
+.activity-item:nth-child(n+11) {
+    display: none;
+}
+
+/* Style the "Show More" button */
+.show-more-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
 ul li {
     background: #ecf0f1;
     margin: 5px 0;
