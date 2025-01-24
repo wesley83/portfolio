@@ -101,10 +101,13 @@ li {
     background: var(--bg-color);
     border: 1px solid var(--border-color);
     transition: var(--transition);
+    transform: translateY(0);
+    transition: transform 0.2s ease;
 }
 
 li:hover {
     background: var(--hover-color);
+    transform: translateY(-2px);
 }
 
 .show-more-btn {
@@ -216,3 +219,198 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
 }
+
+/* Add hover effects for links */
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+/* Add progress indicator */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-color);
+    z-index: 1000;
+    transition: width 0.3s;
+}
+
+/* Add "back to top" button */
+.back-to-top {
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Timeline View */
+.timeline-view {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline-view li {
+    position: relative;
+    margin-left: 2rem;
+    padding-left: 2rem;
+    border-left: 2px solid var(--primary-color);
+}
+
+.timeline-view li::before {
+    content: '';
+    position: absolute;
+    left: -0.5rem;
+    top: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+/* Share buttons */
+.entry-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+li:hover .entry-actions {
+    opacity: 1;
+}
+
+.share-btn {
+    padding: 0.25rem 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+/* View toggle buttons */
+.view-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.view-btn {
+    padding: 0.5rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.view-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Tooltips */
+.entry-description {
+    position: fixed; /* Change from absolute to fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-width: 400px;
+    z-index: 1000; /* Increase z-index */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+li:hover .entry-description {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Print button styles */
+.print-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), 
+                inset 0 1px 0 rgba(255,255,255,0.2);
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.print-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.2), 
+                inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.print-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1), 
+                inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Print styles */
+@media print {
+    nav, 
+    #theme-toggle,
+    .view-controls,
+    .entry-actions,
+    .show-more-btn {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    section {
+        page-break-inside: avoid;
+        border: none;
+        box-shadow: none;
+        margin: 2rem 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+    }
+}
+
+/* Comment out unused features */
+/*
+.view-controls,
+.entry-actions,
+.timeline-view {
+    display: none;
+}
+*/
